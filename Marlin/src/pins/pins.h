@@ -180,6 +180,11 @@
   #include "ramps/pins_Z_BOLT_X_SERIES.h"       // ATmega2560                             env:megaatmega2560
 #elif MB(TT_OSCAR)
   #include "ramps/pins_TT_OSCAR.h"              // ATmega2560                             env:megaatmega2560
+#elif MB(TANGO)
+  #include "ramps/pins_TANGO.h"                 // ATmega2560                             env:megaatmega2560
+#elif MB(MKS_GEN_L_V2)
+  #include "ramps/pins_MKS_GEN_L_V2.h"          // ATmega2560                             env:megaatmega2560
+
 
 //
 // RAMBo and derivatives
