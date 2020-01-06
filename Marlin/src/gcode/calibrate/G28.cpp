@@ -133,7 +133,7 @@
     destination.set(safe_homing_xy, current_position.z);
 
     #if HOMING_Z_WITH_PROBE
-      destination -= probe_offset;
+      destination -= probe_offset_xy;
     #endif
 
     if (position_is_reachable(destination)) {
@@ -284,11 +284,6 @@ void GcodeSuite::G28(const bool always_home_all) {
       stepperY2.rms_current(Y2_CURRENT_HOME);
       if (DEBUGGING(LEVELING)) debug_current("Y2", tmc_save_current_Y2, Y2_CURRENT_HOME);
     #endif
-  #endif
-
-  #if BOTH(STEALTHCHOP_XY, HOME_USING_SPREADCYCLE)
-    if (DEBUGGING(LEVELING)) DEBUG_ECHOLNPGM("Set XY to spreadCycle...");
-    process_subcommands_now_P(PSTR("M569 S0 X Y"));
   #endif
 
   #if ENABLED(IMPROVE_HOMING_RELIABILITY)
@@ -513,11 +508,6 @@ void GcodeSuite::G28(const bool always_home_all) {
     #if HAS_CURRENT_HOME(Y2)
       stepperY2.rms_current(tmc_save_current_Y2);
     #endif
-  #endif
-
-  #if BOTH(STEALTHCHOP_XY, HOME_USING_SPREADCYCLE)
-    if (DEBUGGING(LEVELING)) DEBUG_ECHOLNPGM("Set XY to StealthChop...");
-    process_subcommands_now_P(PSTR("M569 S1 X Y"));
   #endif
 
   ui.refresh();
