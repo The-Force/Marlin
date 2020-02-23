@@ -1,6 +1,6 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
  * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
@@ -21,31 +21,30 @@
  */
 #pragma once
 
-/**
- * MKS BASE 1.0 – Arduino Mega2560 with RAMPS v1.4 pin assignments
- *
- * Rev B - Override pin definitions for CASE_LIGHT and M3/M4/M5 spindle control
- */
+#define OVM(V) OV((V)*(0.327/0.327))
 
-#if HOTENDS > 2 || E_STEPPERS > 2
-  #error "MKS BASE 1.0 supports up to 2 hotends / E-steppers. Comment out this line to continue."
-#endif
-
-#define BOARD_INFO_NAME "MKS BASE 1.0"
-
-//
-// Heaters / Fans
-//
-// Power outputs EFBF or EFBE
-#define MOSFET_D_PIN              7
-
-#define CASE_LIGHT_PIN            2
-
-//
-// M3/M4/M5 - Spindle/Laser Control
-//
-#define SPINDLE_LASER_PWM_PIN     2   // Hardware PWM
-#define SPINDLE_LASER_ENA_PIN    15   // Pullup!
-#define SPINDLE_DIR_PIN          19
-
-#include "pins_RAMPS.h"
+// R25 = 100 kOhm, beta25 = 4092 K, 4.7 kOhm pull-up, bed thermistor
+const short temptable_332[][2] PROGMEM = {
+  { OVM( 268), 150 },
+  { OVM( 293), 145 },
+  { OVM( 320), 141 },
+  { OVM( 379), 133 },
+  { OVM( 445), 122 },
+  { OVM( 516), 108 },
+  { OVM( 591),  98 },
+  { OVM( 665),  88 },
+  { OVM( 737),  79 },
+  { OVM( 801),  70 },
+  { OVM( 857),  55 },
+  { OVM( 903),  46 },
+  { OVM( 939),  39 },
+  { OVM( 954),  33 },
+  { OVM( 966),  27 },
+  { OVM( 977),  22 },
+  { OVM( 999),  15 },
+  { OVM(1004),   5 },
+  { OVM(1008),   0 },
+  { OVM(1012),  -5 },
+  { OVM(1016), -10 },
+  { OVM(1020), -15 }
+};
