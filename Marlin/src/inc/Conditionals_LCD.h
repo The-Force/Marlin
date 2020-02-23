@@ -1,6 +1,6 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
  * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
@@ -361,6 +361,15 @@
 #define HAS_ADC_BUTTONS      ENABLED(ADC_KEYPAD)
 #define HAS_DGUS_LCD         ANY(DGUS_LCD_UI_ORIGIN, DGUS_LCD_UI_FYSETC, DGUS_LCD_UI_HIPRECY)
 
+#if HAS_GRAPHICAL_LCD
+  #ifndef LCD_PIXEL_WIDTH
+    #define LCD_PIXEL_WIDTH 128
+  #endif
+  #ifndef LCD_PIXEL_HEIGHT
+    #define LCD_PIXEL_HEIGHT 64
+  #endif
+#endif
+
 /**
  * Extruders have some combination of stepper motors and hotends
  * so we separate these concepts into the defines:
@@ -490,7 +499,7 @@
 #endif
 
 /**
- * Set a flag for a servo probe
+ * Set a flag for a servo probe (or BLTouch)
  */
 #define HAS_Z_SERVO_PROBE (defined(Z_PROBE_SERVO_NR) && Z_PROBE_SERVO_NR >= 0)
 
@@ -526,6 +535,7 @@
   #define GRID_MAX_POINTS ((GRID_MAX_POINTS_X) * (GRID_MAX_POINTS_Y))
 #endif
 
+#define HAS_EXTRA_ENDSTOPS           ANY(X_DUAL_ENDSTOPS, Y_DUAL_ENDSTOPS, Z_MULTI_ENDSTOPS)
 #define HAS_SOFTWARE_ENDSTOPS        EITHER(MIN_SOFTWARE_ENDSTOPS, MAX_SOFTWARE_ENDSTOPS)
 #define HAS_RESUME_CONTINUE          ANY(EXTENSIBLE_UI, NEWPANEL, EMERGENCY_PARSER)
 #define HAS_COLOR_LEDS               ANY(BLINKM, RGB_LED, RGBW_LED, PCA9632, PCA9533, NEOPIXEL_LED)
@@ -534,10 +544,6 @@
 #define HAS_PRINT_PROGRESS_PERMYRIAD (HAS_PRINT_PROGRESS && EITHER(PRINT_PROGRESS_SHOW_DECIMALS, SHOW_REMAINING_TIME))
 #define HAS_SERVICE_INTERVALS        (ENABLED(PRINTCOUNTER) && (SERVICE_INTERVAL_1 > 0 || SERVICE_INTERVAL_2 > 0 || SERVICE_INTERVAL_3 > 0))
 #define HAS_FILAMENT_SENSOR          ENABLED(FILAMENT_RUNOUT_SENSOR)
-
-#define Z_MULTI_STEPPER_DRIVERS EITHER(Z_DUAL_STEPPER_DRIVERS, Z_TRIPLE_STEPPER_DRIVERS)
-#define Z_MULTI_ENDSTOPS        EITHER(Z_DUAL_ENDSTOPS, Z_TRIPLE_ENDSTOPS)
-#define HAS_EXTRA_ENDSTOPS     (EITHER(X_DUAL_ENDSTOPS, Y_DUAL_ENDSTOPS) || Z_MULTI_ENDSTOPS)
 
 #define HAS_GAMES     ANY(MARLIN_BRICKOUT, MARLIN_INVADERS, MARLIN_SNAKE, MARLIN_MAZE)
 #define HAS_GAME_MENU (1 < ENABLED(MARLIN_BRICKOUT) + ENABLED(MARLIN_INVADERS) + ENABLED(MARLIN_SNAKE) + ENABLED(MARLIN_MAZE))
