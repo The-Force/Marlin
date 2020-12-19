@@ -735,7 +735,8 @@
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 2160}
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 1080}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 1421}
+// #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 1080} // flex3drive original hobb
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1089,7 +1090,7 @@
 
 // @section homing
 
-//#define NO_MOTION_BEFORE_HOMING // Inhibit movement until all axes have been homed
+#define NO_MOTION_BEFORE_HOMING // Inhibit movement until all axes have been homed
 
 //#define UNKNOWN_Z_NO_RAISE      // Don't raise Z (lower the bed) if Z is "unknown." For beds that fall when Z is powered off.
 
@@ -1107,15 +1108,15 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 213
-#define Y_BED_SIZE 195
+#define X_BED_SIZE 213.5
+#define Y_BED_SIZE 213.5
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS -3
-#define Y_MIN_POS -8.5
+#define Y_MIN_POS 2
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
-#define Y_MAX_POS Y_BED_SIZE
+#define Y_MAX_POS Y_BED_SIZE-Y_MIN_POS
 #define Z_MAX_POS 201
 
 /**
@@ -1513,7 +1514,7 @@
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }
-  #define NOZZLE_PARK_POINT { X_MIN_POS + ((X_MAX_POS - X_MIN_POS)/2), Y_MIN_POS, 20  }
+  #define NOZZLE_PARK_POINT { X_MIN_POS, Y_MAX_POS, 20  }
   //#define NOZZLE_PARK_X_ONLY          // X move only is required to park
   //#define NOZZLE_PARK_Y_ONLY          // Y move only is required to park
   #define NOZZLE_PARK_Z_RAISE_MIN   2   // (mm) Always raise Z by at least this distance

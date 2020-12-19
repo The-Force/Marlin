@@ -370,3 +370,13 @@
 
 // Include common SKR pins
 #include "pins_BTT_SKR_common.h"
+
+// switch pins for E1 and E2 as E1 is broken at hardware level (Force)
+#ifdef TEMP_0_PIN
+  #undef TEMP_0_PIN
+  #define TEMP_0_PIN                    P0_25_A2  // A2 (T2) - (69) - TEMP_1_PIN
+#endif
+#ifdef TEMP_1_PIN
+  #undef TEMP_1_PIN
+  #define TEMP_1_PIN                    P0_24_A1  // A1 (T1) - (68) - TEMP_0_PIN
+#endif
