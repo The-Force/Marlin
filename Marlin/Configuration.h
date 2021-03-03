@@ -791,7 +791,7 @@
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 2160}
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 1421}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 2*1421}
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 1080} // flex3drive original hobb
 
 /**
@@ -812,7 +812,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 1500, 1500, 100, 100}
+#define DEFAULT_MAX_ACCELERATION      { 1500, 1500, 100, 75}
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -828,7 +828,7 @@
  *   M204 T    Travel Acceleration
  */
 #define DEFAULT_ACCELERATION          1500    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  100    // E acceleration for retracts
+#define DEFAULT_RETRACT_ACCELERATION  75    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   1500    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
