@@ -1222,7 +1222,7 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 2842}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 690}
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 1080} // flex3drive original hobb
 
 /**
@@ -1243,7 +1243,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 1500, 1500, 100, 75}
+#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 75}
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1753,8 +1753,8 @@
 #define Y_BED_SIZE 213.5
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
-#define X_MIN_POS 0
-#define Y_MIN_POS 0
+#define X_MIN_POS -2
+#define Y_MIN_POS -8
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
