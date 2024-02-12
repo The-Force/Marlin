@@ -2322,7 +2322,7 @@
   #if ENABLED(DISTINCT_E_FACTORS)
     #define ADVANCE_K { 0.22 }    // (mm) Compression length per 1mm/s extruder speed, per extruder
   #else
-    #define ADVANCE_K 0        // 0.22 (mm) Compression length applying to all extruders
+    #define ADVANCE_K 0.025        // 0.22 (mm) Compression length applying to all extruders
   #endif
   //#define ADVANCE_K_EXTRA       // Add a second linear advance constant, configurable with M900 L.
   //#define LA_DEBUG              // Print debug information to serial during operation. Disable for production use.
@@ -2753,7 +2753,7 @@
   #define RETRACT_LENGTH                1.5   // (mm) Default retract length (positive value)
   #define RETRACT_LENGTH_SWAP           13    // (mm) Default swap retract length (positive value)
   #define RETRACT_FEEDRATE              120    // (mm/s) Default feedrate for retracting
-  #define RETRACT_ZRAISE                0.12  // (mm) Default retract Z-raise
+  #define RETRACT_ZRAISE                0.00  // (mm) Default retract Z-raise
   #define RETRACT_RECOVER_LENGTH        0     // (mm) Default additional recover length (added to retract length on recover)
   #define RETRACT_RECOVER_LENGTH_SWAP   0     // (mm) Default additional swap recover length (added to retract length on recover from toolchange)
   #define RETRACT_RECOVER_FEEDRATE      120    // (mm/s) Default feedrate for recovering from retraction
@@ -3282,7 +3282,7 @@
    */
   #if HAS_STEALTHCHOP
     #define STEALTHCHOP_XY
-    //#define STEALTHCHOP_Z
+    #define STEALTHCHOP_Z
     #define STEALTHCHOP_I
     #define STEALTHCHOP_J
     #define STEALTHCHOP_K
@@ -3361,12 +3361,12 @@
    * STEALTHCHOP_(XY|Z|E) must be enabled to use HYBRID_THRESHOLD.
    * M913 X/Y/Z/E to live tune the setting
    */
-  //#define HYBRID_THRESHOLD
+  #define HYBRID_THRESHOLD
 
-  #define X_HYBRID_THRESHOLD     100  // [mm/s]
-  #define X2_HYBRID_THRESHOLD    100
-  #define Y_HYBRID_THRESHOLD     100
-  #define Y2_HYBRID_THRESHOLD    100
+  #define X_HYBRID_THRESHOLD     130  // [mm/s]
+  #define X2_HYBRID_THRESHOLD    130
+  #define Y_HYBRID_THRESHOLD     130
+  #define Y2_HYBRID_THRESHOLD    130
   #define Z_HYBRID_THRESHOLD       3
   #define Z2_HYBRID_THRESHOLD      3
   #define Z3_HYBRID_THRESHOLD      3
