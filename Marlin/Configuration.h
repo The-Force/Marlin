@@ -92,7 +92,7 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#define BAUDRATE 250000
+#define BAUDRATE 1000000
 
 //#define BAUD_RATE_GCODE     // Enable G-code M575 to set the baud rate
 
@@ -1236,7 +1236,6 @@
  */
 
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 690}
-// #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 1080} // flex3drive original hobb
 
 /**
  * Enable support for M92. Disable to save at least ~530 bytes of flash.
